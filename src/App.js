@@ -1,24 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-class ListComponent extends React.Component {
-  constructor(props) {
-    super(props);
+const ListComponent = props => {
+  const [lastClickedButton, setLastClickedButton] = useState('');
 
-    this.state = {
-      lastClickedButton: ''
-    };
-  }
-
-  render() {
     return (
       <div>
-        <h1>The last clicked button is {this.state.lastClickedButton}</h1>
+        <h3>The last clicked CRUD button is {lastClickedButton}</h3>
         <ul>
           <li>
             <button
               onClick={() => {
-                this.setState({ lastClickedButton: 'Create '});
-                this.props.createSomething();
+                setLastClickedButton('Create');
+                //this.props.createSomething();
               }}
             className="my-button">
             Create
@@ -27,8 +20,8 @@ class ListComponent extends React.Component {
           <li>
             <button
               onClick={() => {
-                this.setState({ lastClickedButton: 'Read' });
-                this.props.readSomething();
+                setLastClickedButton('Read');
+                // this.props.readSomething();
               }}
             className="my-button">
             Read
@@ -37,8 +30,8 @@ class ListComponent extends React.Component {
           <li>
             <button 
             onClick={() => {
-              this.setState({ lastClickedButton: 'Update'});
-              this.props.updateSomething();
+              setLastClickedButton('Update');
+              // this.props.updateSomething();
             }}
             className="my-button">
               Updata
@@ -47,8 +40,8 @@ class ListComponent extends React.Component {
           <li>
             <button 
               onClick={() => {
-                this.setState({ lastClickedButton: 'Destroy'});
-                this.props.destroySomething();
+                setLastClickedButton('Destroy');
+                // this.props.destroySomething();
               }}
             className="my-button">
               Destroy
@@ -58,6 +51,6 @@ class ListComponent extends React.Component {
       </div>
     )
   }
-}
+
 
 export default ListComponent;
